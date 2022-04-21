@@ -1,17 +1,17 @@
 import '../styles/globals.css'
 import type {AppProps} from 'next/app'
 
-import {ProductsProvider} from 'modules/products/context/products-context'
 import {QueryClientProvider, QueryClient} from 'react-query'
+import {CartProvider} from 'context/cart'
 
 const queryClient = new QueryClient()
 
 function MyApp({Component, pageProps}: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <ProductsProvider>
+      <CartProvider>
         <Component {...pageProps} />
-      </ProductsProvider>
+      </CartProvider>
     </QueryClientProvider>
   )
 }

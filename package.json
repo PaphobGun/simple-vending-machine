@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "next": "12.1.5",
+    "numeral": "^2.0.6",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-query": "^3.35.0"
   },
   "devDependencies": {
     "@types/node": "17.0.25",
+    "@types/numeral": "^2.0.2",
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",
     "autoprefixer": "^10.4.4",
