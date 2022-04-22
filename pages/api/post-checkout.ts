@@ -124,6 +124,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     res.status(200).json({
       change: change || 0,
+      changeFiat,
     })
   } else {
     res.status(404).json({msg: 'not found'})

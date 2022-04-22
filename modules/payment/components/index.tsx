@@ -6,6 +6,7 @@ import CounterCard from 'components/counter-card'
 import {usePaymentContext} from 'context/payment-context'
 import {useCartContext} from 'context/cart-context'
 import useCheckout from 'modules/payment/hooks/checkout'
+import {mapFiatDisplay} from 'modules/payment/utils/fiat-converter'
 
 export default function Payment() {
   const {totalPrice, products} = useCartContext()
@@ -17,7 +18,14 @@ export default function Payment() {
     fiats,
   } = usePaymentContext()
   const {data} = useFiats()
-  const {mutate: checkout} = useCheckout()
+
+  const {
+    mutate: checkout,
+    isError,
+    error,
+    isSuccess: checkoutSuccess,
+    data: checkoutData,
+  } = useCheckout()
   const checkoutDisabled = React.useMemo(
     () => totalInserted < totalPrice,
     [totalPrice, totalInserted],
@@ -53,6 +61,9 @@ export default function Payment() {
           ))}
         </div>
         <div className="mt-12 text-center">
+          {isError && (
+            <div className="my-4 text-center text-red-400">{error.msg}</div>
+          )}
           <button
             className={`text-white bg-sky-400 rounded py-2 px-4 ${
               checkoutDisabled ? 'opacity-50 cursor-not-allowed' : ''
@@ -63,6 +74,21 @@ export default function Payment() {
             Checkout
           </button>
         </div>
+        {checkoutSuccess && (
+          <div className="text-center py-8">
+            <h4 className="text-3xl text-green-400 font-semibold mb-4">
+              Payment Successfull !
+            </h4>
+            <p>Here is the change: {formatCurrency(checkoutData.change)}</p>
+            {Object.entries(checkoutData.changeFiat).map(c =>
+              c[1] ? (
+                <div>
+                  {mapFiatDisplay(c[0])}: {c[1]}
+                </div>
+              ) : null,
+            )}
+          </div>
+        )}
       </div>
     </div>
   )
