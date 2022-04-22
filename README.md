@@ -33,3 +33,9 @@ Or you can run by docker
 docker build -t svm .
 docker run -p 3000:3000 svm
 ```
+
+## Testing
+I also add some testing
+```
+npm run test
+```
