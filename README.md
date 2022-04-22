@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Simple Vending Machine
 
-## Getting Started
+### Customer Operation
+1. A vending machine should accept coins of 1,5,10 THB and banknotes of 20, 50, 100,
+500, 1,000 THB
+2. Allow users to select products a product available in stock
+3. The system should calculate these logics
+a. enough money to buy the chosen product
+b. enough coin or banknote for change to the customer
+c. stock available for sale
+4. Return the number of remaining changes and adjust product stock and coin &
+banknote stock in the vending machine
 
-First, run the development server:
+## Technology Stack
+TypeScript
+React with Nextjs
 
-```bash
+
+## Scope of work
+My preference is Frontend so mainly focus on ``frontend`` the backend is implemented by Nextjs Route API but just for the basic communication with frontend but yes it can calculate the totalprice totalinserted and change.
+
+## Getting Start
+
+You can run by 
+```
+npm i
+
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Or you can run by docker
+```
+docker build -t svm .
+docker run -p 3000:3000 svm
+```
